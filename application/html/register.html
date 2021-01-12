@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="icon" href="./Bilder/icom.png">
+</head>
+<body>
+    <form action="location2.php" method="POST">
+        <div class="information">
+            <h1>Register</h1>
+            <input type="text" placeholder = "Vorname...." name="vorname" required>
+            <input type="text" placeholder = "Nachname..." name="nachname" required>
+            <input type="text" placeholder = "Ortschaft..."name="ortschaft" required>
+            <input type="text" placeholder = "Postleitzahl..." name="postleitzahl" required>
+            <input type="text" placeholder = "Longitude....." name="lng" required>
+            <input type="text" placeholder = "Latitude....." name="lat" required>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+<style>
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+div{
+    
+    /*margin:0 auto;*/
+    /*display: flex;
+    flex-direction: column;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    width: 100vw;
+    height: 100vh;
+}
+input{
+    width: 20%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border-color: #C3BDBD ;
+    height: 3%;
+    border: 3px solid  #C3BDBD; 
+}
+button{
+    background-color: #438BDE;
+    font-family: Arial, Helvetica, sans-serif;
+    border: darkblue;
+    border-radius: 10px;
+    width: 5%;
+    height: 3%;
+    font-size: 16px;
+    font-style: bold;
+}
+</style>
+</html>

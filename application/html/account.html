@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Account</title>
+        <meta charset="utf-8">
+        <link rel="icon" href="./Bilder/icom.png">
+    </head>
+    <form action="account.php" method="POST">
+    <body>
+        <div>
+            <h1>Register Account</h1>
+                <input type="text" placeholder="Username..." name="username">
+                <input type="password" placeholder="Password..." name="password">
+                <input type="password" placeholder="Password confirm..." name="password_confirm">
+                <button type="submit"> Submit </button>
+            </div>
+        </body>
+    </form>
+    <style>
+    h1{
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+div{
+    
+    /*margin:0 auto;*/
+    /*display: flex;
+    flex-direction: column;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    width: 100vw;
+    height: 100vh;
+}
+input{
+    width: 20%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border-color: #C3BDBD ;
+    height: 3%;
+    border: 3px solid  #8A8A8A;
+    background-color: #C3BDBD; 
+}
+button{
+    background-color: #438BDE;
+    font-family: Arial, Helvetica, sans-serif;
+    border: darkblue;
+    border-radius: 10px;
+    width: 5%;
+    height: 3%;
+    font-size: 16px;
+    font-style: bold;
+}
+    </style>
+</html>
