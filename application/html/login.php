@@ -19,7 +19,7 @@ $verifacation = "SELECT username, password FROM Users WHERE username = '$usernam
 
 $result = mysqli_query($database, $verifacation);
 
-if ($result == $verifacation) {
+if (mysqli_num_rows($result)) {
     echo "Acess granted";
     //header("Location: crud.php");
 } else {
