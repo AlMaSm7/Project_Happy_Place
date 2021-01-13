@@ -57,6 +57,7 @@
       text-decoration: underline;
     }
   </style>
+  <script src="icon.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
   <title>Project Happy Place</title>
 </head>
@@ -177,11 +178,11 @@
   </div>
   <script>
     <?php
-     $query = "SELECT latitude, longitude FROM places;";
-     $result = mysqli_query($database, $query);
+    $query = "SELECT latitude, longitude FROM places;";
+    $result = mysqli_query($database, $query);
 
-     echo "var data = " . json_encode($result->fetch_all(MYSQLI_ASSOC)) . ";";
-     ?>
+    echo "var data = " . json_encode($result->fetch_all(MYSQLI_ASSOC)) . ";";
+    ?>
     
     for(var point of data) {
       add_map_point(point.latitude, point.longitude);

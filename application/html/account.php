@@ -28,10 +28,10 @@ if ($password === $password_confirm) {
 if (mysqli_query($database, $query_user)) {
 
     echo "Sucess back to website...";
-    header("Location: map.php");
+    //header("Location: map.php");
 } else {
     echo $query_user . "<br>";
-    header("Location: account.php");
+    //header("Location: account.php");
     echo "Errors: " . $query . "<br>" . mysqli_error($database);
 }
 
@@ -46,6 +46,9 @@ if (mysqli_query($database, $query_user)) {
 <body>
     <a href="Map.php">
         <p>Here to see map...</p>
+    </a>
+    <a href="account.php">
+        <p>Register again if failed...</p>
     </a>
 </body>
 

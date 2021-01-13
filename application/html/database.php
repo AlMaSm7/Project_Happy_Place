@@ -1,6 +1,5 @@
 <?php
 
-
 session_start();
 
 $database = mysqli_connect('mariadb', 'root', 'happyplace', 'happyplace');
@@ -13,39 +12,42 @@ if (!$database) {
 }
 
 
-
+$users = "SELECT * FROM Users;";
+$result = mysqli_query($database, $users);
 
 /*$lat_js = json_decode($lat, true);
     $lon_js = json_decode($lon, true);*/
-
+/*
 $names = "SELECT * FROM apprentices;";
 $result = mysqli_query($database, $names);
 
 $place = "SELECT * FROM places;";
 $result_place = mysqli_query($database, $place);
 
-$marker = "SELECT * FROM marker;";
-$result_marker = mysqli_query($database, $marker);
+$marker = "SELECT * FROM markers;";
+$result_marker = mysqli_query($database, $marker);*/
 ?>
 <html>
 
 <head>
     <title>CRUD</title>
     <link rel="icon" href="./Bilder/icom.png">
+    <style>
+    .hide{
+        display: none;
+    }
+    </style>
 </head>
 
 <body>
     <div id="apprentices">
     <?php
     echo "<table id = table class = table >";
-    echo "<tr> <th>id: </th> <th> Vorname: </th> <th> Nachname:  </th> <th> Ortschaft:  </th> </tr>";
+    echo "<tr> <th>id: </th> <th> Username: </th> </tr>";
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
         echo "<td>" . $row["id"] . "</td>  ";
-        echo "<td>" . $row["prename"] . "</td>  ";
-        echo "<td>" . $row["lastname"] . "</td>  ";
-        echo "<td>" . $row["place_id"] . "</td>  ";
-        echo "<td>" . $row["markers_id"] . "</td>  ";
+        echo "<td>" . $row["Username"] . "</td>  ";
         echo "</tr>";
         //echo "<td>" . $row_place["place"] . "</td>  ";
     }
@@ -54,6 +56,7 @@ $result_marker = mysqli_query($database, $marker);
     </div>
     <div id="places">
     <?php
+    /*
     echo "<table id = table_place class = table >";
     echo "<tr> <th>id: </th> <th> Ortschaft: </th> <th> Latitude:  </th> <th> Longitude:  </th> </tr>";
     while ($row = $result_place->fetch_assoc()) {
@@ -66,10 +69,11 @@ $result_marker = mysqli_query($database, $marker);
         //echo "<td>" . $row_place["place"] . "</td>  ";
     }
     echo "</table>";
-    ?>
+    */?>
     </div>
     <div id="markers">
     <?php
+    /*
     echo "<table id = table_place class = table >";
     echo "<tr> <th>id: </th> <th> Description: </th> <th> Latitude:  </th> <th> Longitude:  </th> </tr>";
     while ($row = $result_marker->fetch_assoc()) {
@@ -82,13 +86,54 @@ $result_marker = mysqli_query($database, $marker);
         //echo "<td>" . $row_place["place"] . "</td>  ";
     }
     echo "</table>";
-    ?>
+    */?>
+    <!--
     </div>
+    <div id="tabels">
+        <button onclick="places()" id="edit">Edit places</button>
+        <button onclick="marker()" id="marker">Edit Markers</button>
+        <button onclick="appren()" id="appren">Edit apprentices</button>
+    </div>
+    -->
     <div id="options">
-        <button>Edit Value</button>
-        <button>Delete row</button>
-        <button>Add row</button>
+    <button onclick="places()" id="edit">Delete</button>
+        <button onclick="add()" id="delete_btn">Add</button>
+        <button>Edit</button>
     </div>
-</body>
+    <form action="delete.php" method="POST">
+        <div id="delete">
+            <input type="text" placeholder = "Row(id)...." name="id" required>
+            <button type="submit"> Submit </button>
+        </div>
+    </form>
+    <form action="add.php" method="POST">
+        <div id="insert">
+            <input type="text" placeholder = "New Username...." name="username" required>
+            <input type="password" placeholder = "New Password...." name="password" required>
+            <button type="submit"> Submit </button>
+        </div>
+    </form>
 
+</body>
+<script>
+    const option = document.getElementById("options");
+    /*const apprentices_input = document.getElementById("apprentices");
+    const tabels = document.getElementById("tabels");
+    const option = document.getElementById("options");*/
+    const delete_option = document.getElementById("delete");
+    const insert = document.getElementById("insert");
+
+    delete_option.classList.add("hide");
+    insert.classList.add("hide");
+    
+    function places(){
+        option.classList.add("hide");
+        edit.classList.remove("hide");
+    }
+
+    function add(){
+        option.classList.add("hide");
+        insert.classList.remove("hide");
+    }
+</script>
 </html>

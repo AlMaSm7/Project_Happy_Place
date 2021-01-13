@@ -64,11 +64,11 @@ $query = "INSERT INTO apprentices (prename, lastname, place_id, markers_id) VALU
 if (mysqli_query($database, $query)) {
 
     echo "Sucess";
-    header("Location: map.php");
+    //header("Location: map.php");
 
   } else {
     echo $query_place."<br>";
-    header("Location: location2.php");
+    //header("Location: location2.php");
     echo $query_marker."<br>";
     echo "Errors: " . $query . "<br>" . mysqli_error($database);
 
@@ -82,5 +82,6 @@ if (mysqli_query($database, $query)) {
     </head>
     <body>
         <a href="Map.php"><p>Here to see map...</p></a>
+        <a href="register.html"><p>Here to see map...</p></a>
     </body>
 </html>

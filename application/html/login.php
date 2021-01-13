@@ -15,16 +15,35 @@ if (!$database) {
 $username = mysqli_real_escape_string($database, $_POST['username']);
 $password = mysqli_real_escape_string($database, $_POST['password']);
 
-$verifacation = "SELECT Username FROM Users WHERE Username = '$username' AND password = '$password';";
+$verifacation = "SELECT username, password FROM Users WHERE username = '$username' AND password = '$password';";
 
 $result = mysqli_query($database, $verifacation);
 
-if (mysqli_num_rows($result)) {
+if ($result == $verifacation) {
     echo "Acess granted";
-    header("Location: crud.php");
+    //header("Location: crud.php");
 } else {
     print $verifacation;
     echo mysqli_error($database);
-    header("Location: login.php");
+    //header("Location: login.php");
     echo "Something went wrong :-(";
 }
+?>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Status Data</title>
+</head>
+
+<body>
+    <a href="Map.php">
+        <p>Here to see map...</p>
+    </a>
+    <a href="account.php">
+        <p>Login again if failed...</p>
+    </a>
+</body>
+
+</html>
