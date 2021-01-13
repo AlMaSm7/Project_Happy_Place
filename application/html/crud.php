@@ -88,7 +88,7 @@
             <a href="database.php">
                 <th> Edit Database | </th>
             </a>
-            <a href="Map.php">
+            <a href="database.php">
                 <th> Edit Database | </th>
             </a>
         </tr>
@@ -164,6 +164,10 @@
     <div class="information">
         <?php
         session_start();
+
+        if($_SESSION["logincheck"]==FALSE){
+            die('Have to login first?');
+        }
 
         $database = mysqli_connect('mariadb', 'root', 'happyplace', 'happyplace');
 

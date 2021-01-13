@@ -4,6 +4,11 @@ session_start();
 
 $database = mysqli_connect('mariadb', 'root', 'happyplace', 'happyplace');
 
+if($_SESSION["logincheck"]==FALSE){
+    die('Have to login first?');
+}
+
+
 if (!$database) {
     echo "FEHLER BEI DER VERBINDUNG MIT SQL";
     echo $database;
@@ -96,15 +101,15 @@ $result_marker = mysqli_query($database, $marker);*/
     </div>
     -->
     <div id="options">
-    <button onclick="places()" id="edit">Delete</button>
+        <button onclick="places()" id="edit">Delete</button>
         <button onclick="add()" id="delete_btn">Add</button>
-        <button onclick="edit()">Edit</button>
+        <button onclick="edit()"id="edit_btn">Edit</button>
     </div>
     <form action="delete.php" method="POST">
         <div id="delete">
             <input type="text" placeholder = "Row(id)...." name="id" required>
             <button type="submit"> Submit </button>
-        </div>
+        </div> 
     </form>
     <form action="add.php" method="POST">
         <div id="insert">
@@ -115,6 +120,7 @@ $result_marker = mysqli_query($database, $marker);*/
     </form>
     <form action="edit.php" method="POST">
         <div id="edit">
+            <input type="text" placeholder = "Id...." name="id" required>
             <input type="text" placeholder = "New Username...." name="username" required>
             <input type="password" placeholder = "New Password...." name="password" required>
             <button type="submit"> Submit </button>
@@ -122,16 +128,20 @@ $result_marker = mysqli_query($database, $marker);*/
     </form>
 </body>
 <script>
+    
     const option = document.getElementById("options");
-    /*const apprentices_input = document.getElementById("apprentices");
+    //const apprentices_input = document.getElementById("apprentices");
     const tabels = document.getElementById("tabels");
-    const option = document.getElementById("options");*/
+    const option = document.getElementById("options");
     const delete_option = document.getElementById("delete");
     const insert = document.getElementById("insert");
+    const edit = document.getElementById("edit");
+
 
     delete_option.classList.add("hide");
     insert.classList.add("hide");
-    
+    edit.classList.add("hide");
+
     function places(){
         option.classList.add("hide");
         delete_option.classList.remove("hide");

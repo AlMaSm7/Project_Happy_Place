@@ -2,6 +2,7 @@
 
 session_start();
 
+$_SESSION["logincheck"] = FALSE;
 
 $database = mysqli_connect('mariadb', 'root', 'happyplace', 'happyplace');
 
@@ -22,6 +23,7 @@ $result = mysqli_query($database, $verifacation);
 if (mysqli_num_rows($result)) {
     echo "Acess granted";
     //header("Location: crud.php");
+    $_SESSION["logincheck"] = TRUE;
 } else {
     print $verifacation;
     echo mysqli_error($database);
@@ -38,7 +40,7 @@ if (mysqli_num_rows($result)) {
 </head>
 
 <body>
-    <a href="Map.php">
+    <a href="crud.php">
         <p>Here to see map...</p>
     </a>
     <a href="login.html">

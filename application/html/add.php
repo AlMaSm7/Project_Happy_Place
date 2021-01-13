@@ -4,6 +4,11 @@ session_start();
 
 $firstname = "";
 
+if($_SESSION["logincheck"]==FALSE){
+    die('Have to login first?');
+}
+
+
 $database = mysqli_connect('mariadb', 'root', 'happyplace','happyplace' );
 
 if(!$database){
@@ -41,7 +46,7 @@ if (mysqli_query($database, $deleted)) {
 </head>
 
 <body>
-    <a href="Map.php">
+<a href="crud.php">
         <p>Here to see map...</p>
     </a>
     <a href="database.php">

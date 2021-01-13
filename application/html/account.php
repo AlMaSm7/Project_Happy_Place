@@ -44,7 +44,7 @@ if (mysqli_query($database, $query_user)) {
 </head>
 
 <body>
-    <a href="Map.php">
+    <a href="crud.php">
         <p>Here to see map...</p>
     </a>
     <a href="account.php">
