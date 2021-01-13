@@ -41,6 +41,7 @@ $result_marker = mysqli_query($database, $marker);*/
     .hide{
         display: none;
     }
+    
     </style>
 </head>
 
