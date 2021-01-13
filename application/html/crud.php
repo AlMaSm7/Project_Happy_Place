@@ -88,6 +88,9 @@
             <a href="database.php">
                 <th> Edit Database | </th>
             </a>
+            <a href="Map.php">
+                <th> Edit Database | </th>
+            </a>
         </tr>
         <button onclick="show_table()" id="btn_show">Show Table of Apprenitces</button>
         <button onclick="hide_table()" id="btn_hide">Hide Table of Apprentices</button>

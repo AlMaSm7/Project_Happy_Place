@@ -82,6 +82,6 @@ if (mysqli_query($database, $query)) {
     </head>
     <body>
         <a href="Map.php"><p>Here to see map...</p></a>
-        <a href="register.html"><p>Here to see map...</p></a>
+        <a href="register.html"><p>If it didnt work...</p></a>
     </body>
 </html>

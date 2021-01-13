@@ -44,7 +44,7 @@ if (mysqli_query($database, $deleted)) {
     <a href="Map.php">
         <p>Here to see map...</p>
     </a>
-    <a href="account.php">
+    <a href="database.php">
         <p>Try again if failed...</p>
     </a>
 </body>

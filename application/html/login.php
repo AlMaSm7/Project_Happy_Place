@@ -41,7 +41,7 @@ if ($result == $verifacation) {
     <a href="Map.php">
         <p>Here to see map...</p>
     </a>
-    <a href="account.php">
+    <a href="login.html">
         <p>Login again if failed...</p>
     </a>
 </body>
