@@ -2,23 +2,22 @@
 
 session_start();
 
-$database = mysqli_connect('mariadb', 'root', 'happyplace', 'happyplace');
-
-if($_SESSION["logincheck"]==FALSE){
-    die('Have to login first?');
-}
+require_once("db_connection_oop.php");
 
 
-if (!$database) {
-    echo "FEHLER BEI DER VERBINDUNG MIT SQL";
-    echo $database;
-} else {
-    echo "VERBINDUNG ERFOLGREICH <br>";
-}
+$db = new Database('mariadb', 'happyplace', 'happyplace','happyplace');
+var_dump($db);
+exit;
+require("entity.class.php");
+$link = $db->connection;
+$apprentices = new Entity($link, "apprentices");
+$ID = 1;
+// Chat öffnen :)
+var_dump($apprentices->load($ID));
 
 
-$users = "SELECT * FROM Users;";
-$result = mysqli_query($database, $users);
+/*$users = "SELECT * FROM Users;";
+$result = mysqli_query($connection, $users);
 
 /*$lat_js = json_decode($lat, true);
     $lon_js = json_decode($lon, true);*/
@@ -41,14 +40,14 @@ $result_marker = mysqli_query($database, $marker);*/
     .hide{
         display: none;
     }
-    
+
     </style>
 </head>
 
 <body>
     <div id="apprentices">
     <?php
-    echo "<table id = table class = table >";
+    /*echo "<table id = table class = table >";
     echo "<tr> <th>id: </th> <th> Username: </th> </tr>";
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
@@ -110,7 +109,7 @@ $result_marker = mysqli_query($database, $marker);*/
         <div id="delete">
             <input type="text" placeholder = "Row(id)...." name="id" required>
             <button type="submit"> Submit </button>
-        </div> 
+        </div>
     </form>
     <form action="add.php" method="POST">
         <div id="insert">
@@ -129,7 +128,7 @@ $result_marker = mysqli_query($database, $marker);*/
     </form>
 </body>
 <script>
-    
+
     const option = document.getElementById("options");
     //const apprentices_input = document.getElementById("apprentices");
     const tabels = document.getElementById("tabels");
