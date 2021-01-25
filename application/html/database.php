@@ -5,10 +5,15 @@ session_start();
 require_once("db_connection_oop.php");
 
 
-$db = new Database('mariadb', 'happyplace', 'happyplace','happyplace');
+$db = new Database('mariadb', 'root', 'happyplace','happyplace');
 var_dump($db);
-exit;
+//exit;
 require("entity.class.php");
+$users = new Entity($link, "Users");
+$users = new Entity($link, "markers");
+$users = new Entity($link, "apprentices");
+$users = new Entity($link, "places");
+
 $link = $db->connection;
 $apprentices = new Entity($link, "apprentices");
 $ID = 1;

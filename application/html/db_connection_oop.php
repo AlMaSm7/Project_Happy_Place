@@ -10,7 +10,7 @@
 class Database
 {
     private $host, $database, $username, $password, $connection;
-    private $port = 8080;
+    private $port;
 
     /**
      * Sets the connection credentials to connect to your database.
@@ -22,7 +22,7 @@ class Database
      * @param integer $port - the port of your database
      * @param boolean $autoconnect - to auto connect to the database after settings connection credentials
      */
-    function __construct($host, $username, $password, $database, $port = 8080, $autoconnect = true)
+    function __construct($host, $username, $password, $database, $port = 3306, $autoconnect = true)
     {
         $this->host = $host;
         $this->database = $database;
