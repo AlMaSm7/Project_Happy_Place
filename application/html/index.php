@@ -94,6 +94,32 @@ require_once "data.php";
     <button onclick="show_table()" id="btn_show">Show Table of Apprenitces</button>
     <button onclick="hide_table()" id="btn_hide">Hide Table of Apprentices</button>
   </div>
+  <div>
+    <?php
+    /*
+    $names = "SELECT prename, lastname FROM apprentices;";
+    $result = mysqli_query($database, $names);
+
+    $place = "SELECT name FROM places;";
+    $result_place = mysqli_query($database, $place);
+
+    $join = "SELECT a.prename, a.lastname, p.name FROM places p INNER JOIN apprentices a ON a.place_id = p.id;";
+    $result = mysqli_query($database, $join);
+
+    echo "<table id = table class = table >";
+    echo "<tr><th> Vorname: </th> <th> Nachname:  </th> <th> Ortschaft:  </th> </tr>";
+    while ($row = $result->fetch_assoc()) {
+      echo "<tr>";
+      echo "<td>" . $row["prename"] . "</td>  ";
+      echo "<td>" . $row["lastname"] . "</td>  ";
+      echo "<td>" . $row["name"] . "</td>  ";
+      echo "</tr>\n";
+      //echo "<td>" . $row_place["place"] . "</td>  ";
+    }
+    echo "</table>";
+*/
+    ?>
+  </div>
   <script type="text/javascript">
     var markerPoints = [<?php
                         foreach ($markers as $marker) {
@@ -137,6 +163,25 @@ require_once "data.php";
         zoom: 10
       })
     });
+
+    /*const table = document.getElementById('table');
+    const table_show_btn = document.getElementById('btn_show');
+    const table_hide_btn = document.getElementById('btn_hide');
+
+    table_hide_btn.classList.add("hide");
+    table.classList.add("hide");
+
+    function show_table(){
+      table.classList.remove("hide");
+      table_show_btn.classList.add("hide");
+      table_hide_btn.classList.remove("hide");
+    }
+
+    function hide_table(){
+      table.classList.add("hide");
+      table_show_btn.classList.remove("hide");
+      table_hide_btn.classList.add("hide");
+    }*/
   </script>
 </body>
 

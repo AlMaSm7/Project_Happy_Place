@@ -46,7 +46,7 @@ $login_check = $login->login();
 print_r($login_check);
 echo "test";
 echo $login_check;
-header("Location: http://localhost/crud.php");
+header("Location: http://localhost/database_copy.php");
 
 ?>
 
