@@ -17,17 +17,17 @@ function location()
 */
 session_start();
 
-$firstname = "";
+require 'account.php';
+require 'database_class.php';
 
-$database = mysqli_connect('mariadb', 'root', 'happyplace','happyplace' );
+$register_location = new User($connection);
 
-if(!$database){
-    echo "FEHLER BEI DER VERBINDUNG MIT SQL";
-    echo $database;
+$values = $register_location->get_values($_POST);
 
-}else{
-    echo "VERBINDUNG ERFOLGREICH\n";
-}
+$register_method = $register_location->register_location();
+
+header("Location: http://localhost/index.php");
+echo $register_method;
 
         
 
@@ -40,7 +40,7 @@ if(!$database){
         $result_count = $database->query($sql_count);
         $count = $result_count->fetch_array(MYSQLI_BOTH);
         $newid_marker = $count[0]+1;*/
-
+/*
 $prename = mysqli_real_escape_string($database, $_POST['vorname']);
 $lastname = mysqli_real_escape_string($database, $_POST['nachname']);
 $place = mysqli_real_escape_string($database, $_POST['ortschaft']);
@@ -73,6 +73,7 @@ if (mysqli_query($database, $query)) {
     echo "Errors: " . $query . "<br>" . mysqli_error($database);
 
   }
+
 
 ?>
 <html>

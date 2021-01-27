@@ -71,5 +71,11 @@ class Database
     {
         return $this->connection->escape_string($string);
     }
+    public function getConnection(){
+    return $this->connection;
+    }
 }
+
+
+
 

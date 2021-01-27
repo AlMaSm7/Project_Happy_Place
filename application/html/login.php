@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+/*
 $_SESSION["logincheck"] = FALSE;
 
 $database = mysqli_connect('mariadb', 'root', 'happyplace', 'happyplace');
@@ -30,6 +30,24 @@ if (mysqli_num_rows($result)) {
     //header("Location: login.php");
     echo "Something went wrong :-(";
 }
+*/
+require 'account.php';
+require 'database_class.php';
+echo "test";
+
+$login = new User($connection);
+echo "test";
+$values = $login->get_values($_POST);
+echo "test";
+print_r($values);
+print_r($login);
+print_r($_POST);
+$login_check = $login->login();
+print_r($login_check);
+echo "test";
+echo $login_check;
+header("Location: http://localhost/crud.php");
+
 ?>
 
 <html>

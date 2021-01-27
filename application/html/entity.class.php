@@ -3,11 +3,14 @@
 /**
  * Generate an entity object that provide CRUD operation for a database table.
  *
+ * Example: $users = new Entity($link, "users");
+ *
  * @author   Fabian Dennler <fd@fabforge.ch>
  */
 
 class Entity
 {
+
     private $connection = '';
     private $table = '';
     public $columns;
@@ -20,7 +23,6 @@ class Entity
         $this->table = $table;
         $this->describe();
     }
-
 
     /**
      * Get the data definition for the requested table.
@@ -81,6 +83,7 @@ class Entity
         try {
             $sql = sprintf("SELECT * FROM " . $this->table);
             if ($filter != "") {
+
                 $sql .= sprintf(" WHERE %s", $filter);
             }
             $statement = $this->connection->prepare($sql);
@@ -103,7 +106,7 @@ class Entity
     public function delete($id)
     {
         try {
-            $statement = $this->connection->prepare("DELETE * FROM " . $this->table . " WHERE id=?");
+            $statement = $this->connection->prepare("DELETE FROM " . $this->table . " WHERE id=?");
             $statement->bind_param('d', $id);
             $result = $statement->execute();
             $statement->close();
@@ -112,7 +115,6 @@ class Entity
             throw $e;
         }
     }
-
 
     /**
      * Save a record to Database
@@ -124,9 +126,8 @@ class Entity
     public function save($entity)
     {
         $this->prepare($entity);
-        // if an entity id is set, we update the record
         if (isset($entity->id)) {
-            $sql = "UPDATE tasks SET "; //title = ? , notes = ?, deadline = ? WHERE id = ?";
+            $sql = "UPDATE " . $this->table . " SET "; //title = ? , notes = ?, deadline = ? WHERE id = ?";
             foreach ($this->data as $column => $value) {
                 if ($column == "id") {
                     continue;
@@ -136,10 +137,9 @@ class Entity
             $sql  .= implode(",", $values);
             $sql .= sprintf(" WHERE id=%d", $entity->id);
         } else {
-            // without entity id it's a new record
-            $sql = "INSERT INTO " . $this->table . " (%s) VALUES (%s);";
+            $sql = "INSERT INTO " . $this->table . " (%s) VALUES ('%s');";
             // implode keys
-            $columns = implode("`, `", array_keys($this->data));
+            $columns = implode(", ", array_keys($this->data));
             // implode values
             $values = implode("', '", $this->data);
             $sql = sprintf($sql, $columns, $values);
@@ -169,7 +169,6 @@ class Entity
             }
         }
     }
-
 
     /**
      * Set an entity variable.
@@ -223,7 +222,3 @@ class Entity
         return null;
     }
 }
-$users = new Entity($link, "Users");
-$users = new Entity($link, "markers");
-$users = new Entity($link, "apprentices");
-$users = new Entity($link, "places");

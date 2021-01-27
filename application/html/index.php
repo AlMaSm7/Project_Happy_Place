@@ -34,6 +34,39 @@ require_once "data.php";
       margin-top: .5rem;
       font-size: .75rem;
     }
+    .nav{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      background-color: #606060;
+      height: 3rem;
+      align-self: top;
+    }
+    .table, tr, th, td{
+        border: 1px solid black;
+        background-color: #C3BDBD;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    a{
+      color: #E0E0E0;
+      text-decoration: none;
+    }
+    a:hover{
+      text-decoration-line: underline;
+      text-decoration-style: solid;
+    }
+    button{
+      background-color: #606060;
+      color: #E0E0E0;
+      height: 100%;
+      border-radius: 2px;
+      border:none;
+      font-family: Arial;
+    }
+    button:hover{
+      text-decoration: underline;
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/build/ol.js"></script>
   <title>ol example</title>
@@ -52,6 +85,15 @@ require_once "data.php";
     </div>
     <button type="submit">Add Marker</button>
   </form>
+  <div class="nav"> 
+    <tr>
+      <a href="register.html"><th>Register Location | </th></a>
+      <a href="login.html"><th>  Login | </th></a>
+      <a href="account.html"><th>  Register Account |  </th></a>
+    </tr>
+    <button onclick="show_table()" id="btn_show">Show Table of Apprenitces</button>
+    <button onclick="hide_table()" id="btn_hide">Hide Table of Apprentices</button>
+  </div>
   <script type="text/javascript">
     var markerPoints = [<?php
                         foreach ($markers as $marker) {

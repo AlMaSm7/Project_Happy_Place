@@ -1,24 +1,30 @@
 <?php
 
-session_start();
+/*session_start();
 
-require_once("db_connection_oop.php");
+require_once ("db_connection_oop.php");
+require ("entity.class.php");
 
 
-$db = new Database('mariadb', 'root', 'happyplace','happyplace');
-var_dump($db);
-//exit;
-require("entity.class.php");
-$users = new Entity($link, "Users");
-$users = new Entity($link, "markers");
-$users = new Entity($link, "apprentices");
-$users = new Entity($link, "places");
+$dbms = new Database("mariadb", "root", "happyplace", "happyplace");
 
-$link = $db->connection;
-$apprentices = new Entity($link, "apprentices");
-$ID = 1;
-// Chat öffnen :)
-var_dump($apprentices->load($ID));
+
+$entity = new Entity($dbms->getConnection(), "places");
+
+print_r($entity->columns);
+
+/*$new = new stdClass();
+$new->name = "Unbekannte Ortschaft";
+$entity->save($new);
+$id = 1;
+
+$update = $entity->load($id);
+$update->name = "Affeltrangen OOOOO";
+$entity->save($update);
+
+
+
+$delete = $entity->delete($id);*/
 
 
 /*$users = "SELECT * FROM Users;";
